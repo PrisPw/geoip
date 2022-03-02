@@ -1,0 +1,58 @@
+{
+    "name": "prispw/geoip",
+    "description": "Geoip Wrapper with Laravel Support",
+    "homepage": "https://github.com/prispw/geoip",
+    "keywords": [
+        "geoip",
+        "ipstack",
+        "ip-api",
+        "maxmind",
+        "telize"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pulkit Jalan && PrisPW"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5|^8.0",
+        "illuminate/support": "^5.8|^6|^7|^8|^9",
+        "illuminate/console": "^5.8|^6|^7|^8|^9",
+        "guzzlehttp/guzzle": "^6.5|^7",
+        "geoip2/geoip2": "^2.11"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0|^9.0",
+        "mockery/mockery": "^1.2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "PrisPw\\GeoIP\\": "src"
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PrisPw\\GeoIP\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PrisPw\\GeoIP\\GeoIPServiceProvider"
+            ],
+            "aliases": {
+                "GeoIP": "PrisPw\\GeoIP\\Facades\\GeoIP"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
