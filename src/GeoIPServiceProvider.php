@@ -3,7 +3,6 @@
 namespace PrisPW\GeoIP;
 
 use Illuminate\Support\ServiceProvider;
-use PrisPW\GeoIP\Console\UpdateCommand;
 
 class GeoIPServiceProvider extends ServiceProvider
 {
@@ -15,10 +14,6 @@ class GeoIPServiceProvider extends ServiceProvider
         $this->app['geoip'] = function ($app) {
             return $app['PrisPW\GeoIP\GeoIP'];
         };
-
-        if ($this->app->runningInConsole()) {
-            $this->commands(['PrisPW\GeoIP\Console\UpdateCommand']);
-        }
 
         if (function_exists('config_path')) {
             $this->publishes([
@@ -36,7 +31,6 @@ class GeoIPServiceProvider extends ServiceProvider
 
         $this->registerGeoIP();
 
-        $this->registerUpdateCommand();
     }
 
     /**
@@ -54,9 +48,6 @@ class GeoIPServiceProvider extends ServiceProvider
      */
     protected function registerUpdateCommand()
     {
-        $this->app->singleton('PrisPW\GeoIP\Console\UpdateCommand', function ($app) {
-            return new UpdateCommand($app['config']['geoip']);
-        });
     }
 
     /**
@@ -68,7 +59,6 @@ class GeoIPServiceProvider extends ServiceProvider
     {
         return [
             'PrisPW\GeoIP\GeoIP',
-            'PrisPW\GeoIP\Console\UpdateCommand',
             'geoip',
         ];
     }
