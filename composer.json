@@ -34,11 +34,6 @@
             "helpers.php"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "PrisPw\\GeoIP\\Tests\\": "tests"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
